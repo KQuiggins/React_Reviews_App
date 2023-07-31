@@ -4,7 +4,7 @@ import FeedbackItem from "./FeedbackItem";
 import { motion, AnimatePresence } from "framer-motion";
 import FeedbackContext from "../context/FeedbackContext";
 
-const FeedbackList = ({ handleDelete }) => {
+const FeedbackList = () => {
   const { feedback } = useContext(FeedbackContext);
   if (!feedback || feedback.length === 0) {
     return <div>No feedback items</div>;
@@ -23,7 +23,7 @@ const FeedbackList = ({ handleDelete }) => {
             <FeedbackItem
               key={item.id}
               item={item}
-              handleDelete={handleDelete}
+              
             />
           </motion.div>
         ))}
