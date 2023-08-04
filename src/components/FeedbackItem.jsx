@@ -25,7 +25,7 @@ const FeedbackItem = ({item}) => {
 
 FeedbackItem.propTypes = {
     item: PropTypes.object.isRequired,
-    handleDelete: PropTypes.func.isRequired
+   
 }
 
 export default FeedbackItem

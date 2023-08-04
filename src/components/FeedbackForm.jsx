@@ -49,7 +49,7 @@ const FeedbackForm = () => {
       } else {
         addFeedback(newFeedback);
       }
-      
+
 
       setText("");
     }
@@ -78,8 +78,6 @@ const FeedbackForm = () => {
   );
 };
 
-FeedbackForm.propTypes = {
-  handleAdd: PropTypes.func.isRequired,
-};
+
 
 export default FeedbackForm;
