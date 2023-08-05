@@ -11,7 +11,7 @@ const FeedbackItem = ({item}) => {
     return (
         <Card reverse={true}>
             <div className="num-display">{item.rating}</div>
-             <button className='close' onClick={() => deleteFeedback(item.id)}>
+             <button className='close' onClick={() => deleteFeedback(item._id)}>
                 <FaTimes color='purple'/>
              </button>
              <button onClick={() => editFeedback(item)} className="edit">
@@ -25,7 +25,7 @@ const FeedbackItem = ({item}) => {
 
 FeedbackItem.propTypes = {
     item: PropTypes.object.isRequired,
-   
+
 }
 
 export default FeedbackItem

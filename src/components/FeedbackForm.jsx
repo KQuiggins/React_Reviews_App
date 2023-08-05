@@ -44,7 +44,7 @@ const FeedbackForm = () => {
       };
 
       if (feedbackEdit.edit === true) {
-        updateFeedback(feedbackEdit.item.id, newFeedback);
+        updateFeedback(feedbackEdit.item._id, newFeedback);
         setBtnDisabled(true);
       } else {
         addFeedback(newFeedback);
