@@ -26,7 +26,7 @@ app.get("/api/feedback", async (req, res) => {
 try {
   const allFeedback = await Review.find({}); // Fetch all feedback from the database
   res.json(allFeedback);
-  console.log("allFeedback", allFeedback);
+
 } catch (error) {
   console.error("Error fetching feedback:", error);
   res.status(500).json({ message: "Server error" });
@@ -37,10 +37,10 @@ try {
 app.post("/api/addFeedback", async (req, res) => {
   try {
     const newFeedback = new Review(req.body);
-    console.log("newFeedback", newFeedback);
+
     const savedFeedback = await newFeedback.save();
     res.json(savedFeedback);
-    console.log("savedFeedback", savedFeedback);
+    
   } catch (error) {
     console.error("Error saving feedback:", error);
     res.status(500).json({ message: "Server error" });
