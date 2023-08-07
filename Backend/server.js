@@ -40,7 +40,7 @@ app.post("/api/addFeedback", async (req, res) => {
 
     const savedFeedback = await newFeedback.save();
     res.json(savedFeedback);
-    
+
   } catch (error) {
     console.error("Error saving feedback:", error);
     res.status(500).json({ message: "Server error" });
@@ -80,9 +80,6 @@ app.put("/api/updateFeedback/:id", async (req, res) => {
 
 
 
-
-
-
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Server running`);
 });
