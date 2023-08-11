@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import connectDB from "./config/db.js";
@@ -9,15 +10,17 @@ dotenv.config();
 connectDB();
 
 const app = express();
+const port = process.env.PORT || 3000;
+const __dirname = path.resolve();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Parse JSON request bodies
 
 
 
-app.get("/", (req, res) => {
-    res.send("Server is ready");
-});
+// app.get("/", (req, res) => {
+//     res.send("Server is ready");
+// });
 
 
 
@@ -78,8 +81,23 @@ app.put("/api/updateFeedback/:id", async (req, res) => {
   }
 });
 
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+  // Any route that is not api route, we want to load index.html
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));
+
+} else {
+
+  app.get("/", (req, res) => {
+    res.send("Server is ready");
+  });
+
+}
 
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server running`);
+
+app.listen(port, () => {
+  console.log(`Serve at http://localhost:${port}`);
 });
